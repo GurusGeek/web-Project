@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Grades</title>
+	<link rel="stylesheet" href="a.css">
+	
+</head>
+<body>
+	<h1>Student Grades</h1>
+	<table id="table1">
+		<tr>
+			<th>Student Name</th>
+			<th>Maths</th>
+			<th>Science</th>
+			<th>English</th>
+		</tr>
+		<tr>
+			<td>John</td>
+			<td>100</td>
+			<td>90</td>
+			<td>80</td>
+		</tr>
+		<tr>
+			<td>Mary</td>
+			<td>70</td>
+			<td>60</td>
+			<td>50</td>
+		</tr>
+		<tr>
+			<td>Paul</td>
+			<td>40</td>
+			<td>30</td>
+			<td>20</td>
+		</tr>
+	</table>
+	<br>
+	<table id="table2">
+		<tr>
+			<th>Grade</th>
+			<th>Lower Limit</th>
+			<th>Upper Limit</th>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>90</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td>B</td>
+			<td>80</td>
+			<td>89</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>70</td>
+			<td>79</td>
+		</tr>
+		<tr>
+			<td>D</td>
+			<td>60</td>
+			<td>69</td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>0</td>
+			<td>59</td>
+		</tr>
+	</table>
+	<br>
+	<p>Average Marks: <span id="average"></span></p>
+	<p>Grade: <span id="grade"></span></p>
+    <script>
+  
+        let table1 = document.getElementById("table1");
+        let table2 = document.getElementById("table2");
+        let average = document.getElementById("average");
+        let grade = document.getElementById("grade");
+  
+        let total = 0;
+        let count = 0;
+  
+        for(let i=1; i<table1.rows.length; i++) {
+          let row = table1.rows[i];
+          for(let j=1; j<row.cells.length; j++) {
+            total += parseInt(row.cells[j].innerHTML);
+            count++;
+          }
+        }
+  
+        let averageMarks = total/count;
+        average.innerHTML = averageMarks.toFixed(2);
+  
+        for(let i=1; i<table2.rows.length; i++) {
+          let row = table2.rows[i];
+          let lowerLimit = parseInt(row.cells[1].innerHTML);
+          let upperLimit = parseInt(row.cells[2].innerHTML);
+  
+          if(averageMarks >= lowerLimit && averageMarks <= upperLimit) {
+            grade.innerHTML = row.cells[0].innerHTML;
+            break;
+          }
+        }
+      </script>
+</body>
+</html>
+
+
